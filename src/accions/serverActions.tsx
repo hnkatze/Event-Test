@@ -1,17 +1,23 @@
 "use server";
 //in this components all the server functions are defined and not the client functions
 
-import { deleteEvent, getEventById, getEvents } from "@/api/firebase/crude";
+import {
+  deleteEvent,
+  getEventById,
+  getEvents,
+  getLaunchById,
+} from "@/api/firebase/crude";
 import { revalidatePath } from "next/cache";
+
 // function to handle event creation
 
 //server function to handle event deletion
 export const handleDeleteEvent = async (formData: FormData) => {
   try {
     const id = formData.get("id")?.toString();
-    await deleteEvent(id || "").then(() => {
+    await deleteEvent(id ?? "").then(() => {
       console.log("Event deleted successfully");
-      revalidatePath("/");
+      revalidatePath(`/${id}`);
     });
   } catch (error) {
     console.log("Error deleting event");
@@ -27,12 +33,23 @@ export const getAllEvents = async () => {
   }
 };
 //server function to get an event by id
-export const getEventByIds = async (id: string) => {
+export const getEventByIds = async (
+  id: string
+): Promise<{ event: MyEvent; type: number }> => {
   try {
+    // try to get the event by ID
     const event = await getEventById(id);
-    return event;
+
+    // if the event is found, return it
+    if (event) {
+      return { event, type: 1 };
+    } else {
+      // is't not found, find the launch by ID
+      const launch = await getLaunchById(id);
+      return { event: launch, type: 2 };
+    }
   } catch (error) {
-    console.log(error);
+    console.error("Error to get a document:", error);
+    throw error;
   }
 };
-//server function to format date and time
