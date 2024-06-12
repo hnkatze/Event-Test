@@ -1,17 +1,31 @@
-import { CardView } from "@/components/component/card-view";
+"use client";
 import { getAllEvents } from "@/accions/serverActions";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { CardViewLitte } from "@/components/component/CardViewLitte";
 
-export default async function Home() {
-  const data = await getAllEvents();
+export default function Home() {
+  const [data, setData] = useState<MyEvent[]>([]);
+  useEffect(() => {
+    async function data() {
+      const data = await getAllEvents();
+      if (data) {
+        setData(data);
+      } else {
+        return toast.error("Error loading events");
+      }
+    }
+    data();
+  }, []);
 
   return (
-    <div className="flex flex-col  justify-center items-center w-full  m-auto ">
-      <h1 className="w-full text-xl text-center md:text-5xl pt-5 pb-5">
+    <div className='flex flex-col  justify-center items-center w-full  m-auto '>
+      <h1 className='w-full text-xl text-center md:text-5xl pt-5 pb-5'>
         Welcome to the Event Management System
       </h1>
-      <div className="flex flex-col md:flex-wrap gap-2 justify-center w-full items-center">
+      <div className='grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-3 lg:grid-cols-3 lg:gap-4 w-full'>
         {data?.map((event) => (
-          <CardView event={event} key={event.id} />
+          <CardViewLitte event={event} key={event.id} />
         ))}
       </div>
     </div>
