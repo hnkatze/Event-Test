@@ -14,8 +14,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { createEvent } from "@/api/firebase/crude";
 import { handlerCreateEvents } from "@/accions/accionClient";
+import { Textarea } from "./ui/textarea";
 
 export function CardCreateEvent() {
   const [name, setName] = useState<string>("");
@@ -53,7 +53,7 @@ export function CardCreateEvent() {
   };
 
   return (
-    <Card className="w-[350px]">
+    <Card className='w-[350px]'>
       <CardHeader>
         <CardTitle>Create An Event </CardTitle>
         <CardDescription>
@@ -61,94 +61,94 @@ export function CardCreateEvent() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid w-full items-center gap-4">
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="name">Name</Label>
+        <div className='grid w-full items-center gap-4'>
+          <div className='flex flex-col space-y-1.5'>
+            <Label htmlFor='name'>Name</Label>
             <Input
-              id="name"
-              name="name"
-              placeholder=" Name of events "
+              id='name'
+              name='name'
+              placeholder=' Name of event '
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="description">Description</Label>
-            <Input
-              id="description"
-              name="description"
-              placeholder="Description"
+          <div className='flex flex-col space-y-1.5'>
+            <Label htmlFor='description'>Description</Label>
+            <Textarea
+              id='description'
+              name='description'
+              placeholder='Description'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="date_start">Date Start</Label>
+          <div className='flex flex-col space-y-1.5'>
+            <Label htmlFor='date_start'>Date Start</Label>
             <Input
-              id="date_start"
-              name="date_start"
-              type="datetime-local"
+              id='date_start'
+              name='date_start'
+              type='datetime-local'
               value={date_start}
               onChange={(e) => setDate_start(e.target.value)}
             />
           </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="date_end">Date End</Label>
+          <div className='flex flex-col space-y-1.5'>
+            <Label htmlFor='date_end'>Date End</Label>
             <Input
-              id="date_end"
-              name="date_end"
-              type="datetime-local"
+              id='date_end'
+              name='date_end'
+              type='datetime-local'
               value={date_end}
               onChange={(e) => setDate_end(e.target.value)}
             />
           </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="location">Location</Label>
+          <div className='flex flex-col space-y-1.5'>
+            <Label htmlFor='location'>Location</Label>
             <Input
-              id="location"
-              name="location"
-              placeholder="Location"
+              id='location'
+              name='location'
+              placeholder='Location'
               value={location}
               onChange={(e) => setLocation(e.target.value)}
             />
           </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="organizer">Organizer</Label>
+          <div className='flex flex-col space-y-1.5'>
+            <Label htmlFor='organizer'>Organizer</Label>
             <Input
-              id="organizer"
-              name="organizer"
-              placeholder="Organizer"
+              id='organizer'
+              name='organizer'
+              placeholder='Organizer'
               value={organizer}
               onChange={(e) => setOrganizer(e.target.value)}
             />
           </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="contact_info">Contact Info</Label>
+          <div className='flex flex-col space-y-1.5'>
+            <Label htmlFor='contact_info'>Contact Info</Label>
             <Input
-              id="contact_info"
-              name="contact_info"
-              placeholder="Contact Info"
+              id='contact_info'
+              name='contact_info'
+              placeholder='Contact Info'
               value={contact_info}
               onChange={(e) => setContact_info(e.target.value)}
             />
           </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="capacity">Capacity</Label>
+          <div className='flex flex-col space-y-1.5'>
+            <Label htmlFor='capacity'>Capacity</Label>
             <Input
-              id="capacity"
-              name="capacity"
-              type="number"
+              id='capacity'
+              name='capacity'
+              type='number'
               value={capacity}
               onChange={(e) => setCapacity(Number(e.target.value))}
             />
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button type="button" variant="outline">
-          <Link href="/">Cancel</Link>
+      <CardFooter className='flex justify-between'>
+        <Button type='button' variant='outline'>
+          <Link href='/'>Cancel</Link>
         </Button>
-        <Button type="button" onClick={() => handleSubmit()}>
+        <Button type='button' onClick={() => handleSubmit()}>
           Create Event
         </Button>
       </CardFooter>
