@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/providers/ThemeProviders";
 import { Navbar } from "@/components/component/NavBar";
 import { Toaster } from "sonner";
+import { Fotter } from "@/components/component/fotter";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -22,24 +23,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen flex flex-col bg-background font-sans antialiased justify-between ",
           fontSans.variable
-        )}
-      >
+        )}>
         <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
+          attribute='class'
+          defaultTheme='system'
           enableSystem
-          disableTransitionOnChange
-        >
-          <main className="container mx-auto ">
+          disableTransitionOnChange>
+          <main className='container pb-10 '>
             <Navbar />
             {children}
-            <Toaster position="top-center" />
+            <Toaster position='top-center' />
           </main>
+          <Fotter />
         </ThemeProvider>
       </body>
     </html>
