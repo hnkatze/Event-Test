@@ -14,7 +14,8 @@ src
 │       ├── config.ts
 │       └── crude.ts
 ├── app
-│   ├── [id]
+│   ├── view
+│   │   └── [id]
 │   │   └── page.tsx
 │   ├── create
 │   │   └── page.tsx
@@ -91,7 +92,7 @@ To get started with this project, follow these steps:
   - `config.ts`: Firebase configuration file.
   - `crude.ts`: Contains CRUD operations for Firebase.
 - **app**: Application pages and layouts.
-  - `[id]`: Dynamic route for viewing individual events.
+  - `view/[id]`: Dynamic route for viewing individual events.
   - `create`: Page for creating new events.
   - `event/[id]`: Page for viewing and editing a specific event.
   - `space`: Page for displaying SpaceX launch data.
