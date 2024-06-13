@@ -12,12 +12,12 @@ import { revalidatePath } from "next/cache";
 // function to handle event creation
 
 //server function to handle event deletion
-export const handleDeleteEvent = async (formData: FormData) => {
+export const handleDeleteEvent = async (formData: FormData): Promise<void> => {
   try {
     const id = formData.get("id")?.toString();
     await deleteEvent(id ?? "").then(() => {
       console.log("Event deleted successfully");
-      revalidatePath(`/${id}`);
+      revalidatePath(`/event/${id}`);
     });
   } catch (error) {
     console.log("Error deleting event");
