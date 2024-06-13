@@ -8,6 +8,7 @@ import {
   getLaunchById,
 } from "@/api/firebase/crude";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 // function to handle event creation
 
@@ -17,7 +18,8 @@ export const handleDeleteEvent = async (formData: FormData): Promise<void> => {
     const id = formData.get("id")?.toString();
     await deleteEvent(id ?? "").then(() => {
       console.log("Event deleted successfully");
-      revalidatePath(`/event/${id}`);
+      revalidatePath(`/`);
+      redirect("/");
     });
   } catch (error) {
     console.log("Error deleting event");

@@ -7,8 +7,8 @@ import {
   Card,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { EventButtonDelete } from "./EventButtonDelete";
 import Link from "next/link";
+import { EventButtonDelete } from "./EventButtonDelete";
 
 export function CardView({
   event,
@@ -17,6 +17,7 @@ export function CardView({
   readonly event: MyEvent;
   readonly type: number;
 }) {
+  // Function to format the date and time
   function formatDateTime(dateTimeString: string): string {
     const options: Intl.DateTimeFormatOptions = {
       year: "numeric",

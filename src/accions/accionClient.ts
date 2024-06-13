@@ -1,4 +1,4 @@
-import { createEvent, updateEvent } from "@/api/firebase/crude";
+import { createEvent, deleteEvent, updateEvent } from "@/api/firebase/crude";
 
 export const handlerCreateEvents = async (data: EventCreate) => {
   try {
@@ -47,5 +47,16 @@ export const handleUpdateEvent = async (data: MyEvent) => {
     });
   } catch (error) {
     console.log("Error updating event: " + error);
+  }
+};
+
+//server function to handle event deletion
+export const handleDeleteEvent = async (id: string) => {
+  try {
+    await deleteEvent(id).then(() => {
+      ("Event deleted successfully");
+    });
+  } catch (error) {
+    console.log("Error deleting event");
   }
 };

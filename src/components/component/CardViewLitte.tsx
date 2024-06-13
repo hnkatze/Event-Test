@@ -48,7 +48,7 @@ export function CardViewLitte({ event }: { readonly event: MyEvent }) {
       </CardContent>
       <CardFooter className=' gap-2'>
         <Button>
-          <Link href={`/${event.id}`}> See This Event </Link>
+          <Link href={`/view/${event.id}`}> See This Event </Link>
         </Button>
       </CardFooter>
     </Card>

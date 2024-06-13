@@ -76,6 +76,7 @@ export async function updateEvent(event: MyEvent): Promise<string> {
 //this function will delete an event in the firebase database
 export async function deleteEvent(id: string): Promise<void> {
   try {
+    console.log("Deleting document with ID: ", id);
     await deleteDoc(doc(db, "events", id));
     return console.log("Document successfully deleted!");
   } catch (e) {
