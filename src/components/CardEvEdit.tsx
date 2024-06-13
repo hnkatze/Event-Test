@@ -46,7 +46,6 @@ export function CardEvEdit({ event }: { readonly event: MyEvent }) {
       await updateEvent(data).then(() => {
         toast.success("Event updated successfully");
         router.push(`/view/${event.id}`);
-        revalidatePath(`/view/${event.id}`);
       });
     } catch (error) {
       console.log("Error updating event: " + error);

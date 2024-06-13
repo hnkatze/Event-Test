@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { EventButtonDelete } from "./EventButtonDelete";
+import { revalidatePath } from "next/cache";
 
 export function CardView({
   event,
@@ -31,8 +32,8 @@ export function CardView({
       "en-US",
       options
     );
-
-    // Convertir la hora a un formato AM/PM
+    revalidatePath(`/view/${event.id}`);
+    //convert 24 hour time to 12 hour time
     const hour = new Date(dateTimeString).getHours();
     const hour12 = hour % 12 || 12;
 
